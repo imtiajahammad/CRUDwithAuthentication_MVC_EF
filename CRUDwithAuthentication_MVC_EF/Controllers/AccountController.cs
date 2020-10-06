@@ -18,6 +18,7 @@ namespace CRUDwithAuthentication_MVC_EF.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private ApplicationDbContext applicationDbContext;
 
         public AccountController()
@@ -25,12 +26,24 @@ namespace CRUDwithAuthentication_MVC_EF.Controllers
             this.applicationDbContext = new ApplicationDbContext();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ApplicationRoleManager roleManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
 
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
         public ApplicationSignInManager SignInManager
         {
             get
@@ -164,18 +177,8 @@ namespace CRUDwithAuthentication_MVC_EF.Controllers
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     /**/
-                    /*var emp = new Employee { FirstName = null, LastName = String.Empty, Dob = String.Empty, Salary = null, TaxRate = String.Empty, userid = user.Id };
-                    var result2 = await UserManager.CreateAsync(emp);*/
                     Employee employee = new Employee();
                     employee.userid = user.Id;/*User.Identity.GetUserId();*/
-                    /*employee.User = user;
-                    employee.FirstName = "sample";
-                    employee.LastName = "sample";
-                    employee.Dob = Convert.ToDateTime("2020-10-08");
-                    employee.Salary = 323232;
-                    employee.TaxRate = 5.4f;*/
-                    /* _userManager
-                        .FindById(User.Identity.GetUserId());*/
                     applicationDbContext.Employees.Add(employee);
                     try
                     {
@@ -191,6 +194,22 @@ namespace CRUDwithAuthentication_MVC_EF.Controllers
                             }
                         }
                     }
+                    /**/
+
+                    /**/
+                    try
+                    {
+                        var userRole = RoleManager.Roles.Where(role => role.Name.Equals("User")).FirstOrDefault();
+                        if (userRole != null)
+                        {
+                            result = await UserManager.AddToRoleAsync(user.Id, userRole.Name);
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        //add errors somewhere
+                    }
+                    
                     /**/
 
 

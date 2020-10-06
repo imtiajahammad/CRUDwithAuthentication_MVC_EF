@@ -25,7 +25,7 @@ namespace CRUDwithAuthentication_MVC_EF.Controllers
         }
 
         // GET: Employee
-        [Authorize]
+        [Authorize(Roles = "SystemAdmin,Admin")]
         public ActionResult Index()
         {
             List<Employee> employees=applicationDbContext.Employees.ToList();
