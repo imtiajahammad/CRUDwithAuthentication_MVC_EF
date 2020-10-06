@@ -171,6 +171,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="DataLayer\CRUD_DB_Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,6 +215,18 @@
     <Compile Include="Migrations\202010051339117_EmployeeUseridRequired.cs" />
     <Compile Include="Migrations\202010051339117_EmployeeUseridRequired.Designer.cs">
       <DependentUpon>202010051339117_EmployeeUseridRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010052329080_RoleCrud.cs" />
+    <Compile Include="Migrations\202010052329080_RoleCrud.Designer.cs">
+      <DependentUpon>202010052329080_RoleCrud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010052352188_RoleCrud1.cs" />
+    <Compile Include="Migrations\202010052352188_RoleCrud1.Designer.cs">
+      <DependentUpon>202010052352188_RoleCrud1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010052357218_RoleCrud3.cs" />
+    <Compile Include="Migrations\202010052357218_RoleCrud3.Designer.cs">
+      <DependentUpon>202010052357218_RoleCrud3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -284,6 +297,11 @@
     <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +349,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010051339117_EmployeeUseridRequired.resx">
       <DependentUpon>202010051339117_EmployeeUseridRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010052329080_RoleCrud.resx">
+      <DependentUpon>202010052329080_RoleCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010052352188_RoleCrud1.resx">
+      <DependentUpon>202010052352188_RoleCrud1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010052357218_RoleCrud3.resx">
+      <DependentUpon>202010052357218_RoleCrud3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,20 +18,17 @@ namespace CRUDwithAuthentication_MVC_EF.Models
             // Add custom user claims here
             return userIdentity;
         }        
-        //public virtual Employee Employee { get; set; }
     }
 
-    //public class PersonalInformation
-    //{
-    //    [Key, ForeignKey("User")]
-    //    public string UserId { get; set; }
+    /*for role CRUD*/
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName) { }
+    }
+    /*for role CRUD*/
 
-    //    public string FirstName { get; set; }
 
-    //    // other fields...
-
-    //    public virtual ApplicationUser User { get; set; }
-    //}
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -44,5 +41,7 @@ namespace CRUDwithAuthentication_MVC_EF.Models
             return new ApplicationDbContext();
         }
         public virtual DbSet<Employee> Employees { get; set; }
+
+        /*public System.Data.Entity.DbSet<CRUDwithAuthentication_MVC_EF.Models.RoleViewModel> RoleViewModels { get; set; }*/
     }
 }
